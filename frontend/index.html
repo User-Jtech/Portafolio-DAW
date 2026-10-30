@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-en="Jaime Galán Gómez — DAW Portfolio">Jaime Galán Gómez — Portafolio DAW</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script>
+    if (localStorage.getItem("tema") === "noche") {
+      document.documentElement.classList.add("modo-noche");
+    }
+  </script>
+</head>
+<body>
+  <div class="portada">
+  <header>
+    <a class="github" href="https://github.com/User-Jtech" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path>
+      </svg>
+    </a>
+    <div class="menu">
+      <nav>
+        <a href="#sobre-mi" data-en="About me">Sobre mí</a>
+        <a href="#conocimientos" data-en="Skills">Conocimientos</a>
+        <a href="#proyectos" data-en="Projects">Proyectos</a>
+        <a href="#contacto" data-en="Contact">Contacto</a>
+      </nav>
+      <div class="ajustes">
+        <button type="button" id="btn-idioma">EN</button>
+        <button type="button" id="btn-tema">Noche</button>
+      </div>
+    </div>
+  </header>
+
+    <section id="nombre">
+      <div class="nombre-texto">
+        <h1>JAIME<br>GALÁN<br>GÓMEZ</h1>
+        <p data-en="Student of Web Application Development">
+          Alumno de Desarrollo de Aplicaciones Web
+        </p>
+      </div>
+    </section>
+  </div>
+
+  <main>
+    <section id="sobre-mi">
+      <div class="sobre-mi-texto">
+        <h2 data-en="About me">Sobre mí</h2>
+        <p data-en="&lt;strong&gt;Junior Full Stack developer in training&lt;/strong&gt;&lt;br&gt;interested in expanding my technical knowledge and building a solid professional career in the technology sector, with commitment, a strong ability to learn, responsibility, problem-solving skills and a strong motivation to keep growing as a professional.">
+          <strong>Desarrollador Full Stack Junior en formación</strong><br>con interés en ampliar mis
+          conocimientos técnicos y desarrollar una trayectoria profesional sólida
+          dentro del sector tecnológico, aportando compromiso, gran capacidad de
+          aprendizaje, responsabilidad, capacidad resolutiva y una fuerte motivación por seguir
+          evolucionando como profesional.
+        </p>
+      </div>
+      <div class="foto-yo" role="img" aria-label="Jaime Galán Gómez"></div>
+    </section>
+
+    <section id="conocimientos">
+      <img class="logos" src="img/Logos.png" alt="Logos">
+      <div>
+      <h2 data-en="Skills">Conocimientos</h2>
+      <ul>
+        <li data-en="Programming: Java and object-oriented programming fundamentals.">Programación: Java y fundamentos de programación orientada a objetos.</li>
+        <li data-en="Web development: HTML, CSS, JavaScript and PHP, including DOM manipulation and web interface development.">Desarrollo web: HTML, CSS, JavaScript y PHP, incluyendo manipulación del DOM y desarrollo de interfaces web.</li>
+        <li data-en="Databases: design and management of relational databases with MySQL and PostgreSQL, SQL queries and data modeling. Also management of non-relational databases (MongoDB).">Bases de datos: diseño y gestión de bases de datos relacionales mediante MySQL y PostgreSQL, consultas SQL y modelado de datos. Así como gestión en bases de datos no relacionales (MongoDB).</li>
+        <li data-en="Project development and control: Git/GitHub, application structure and practical work through projects.">Desarrollo y control de proyectos: Git/GitHub, estructura de aplicaciones y trabajo práctico mediante proyectos.</li>
+        <li data-en="Linux systems, basic system administration and development tools.">Conocimientos en sistemas Linux, administración básica de sistemas y herramientas de desarrollo.</li>
+        <li data-en="English B1 with an official certificate.">Inglés B1 con certificado oficial.</li>
+      </ul>
+      </div>
+    </section>
+
+    <section id="proyectos">
+      <h2 data-en="Projects">Proyectos</h2>
+      <p data-en="I don't have any published development projects yet. In progress.">
+        Todavía no tengo proyectos de desarrollo publicados. En proceso.
+      </p>
+    </section>
+
+    <section id="contacto">
+      <h2 data-en="Contact">Contacto</h2>
+      <ul>
+        <li><span data-en="Email:">Email:</span> <a href="mailto:jgalgotech@gmail.com">jgalgotech@gmail.com</a></li>
+        <li>
+          <span data-en="GitHub:">GitHub:</span>
+          <a href="https://github.com/User-Jtech" target="_blank" rel="noopener noreferrer">github.com/User-Jtech</a>
+        </li>
+        <li>
+          <span data-en="LinkedIn:">LinkedIn:</span>
+          <a href="https://www.linkedin.com/in/jaime-galán-gómez-566b84413" target="_blank" rel="noopener noreferrer">linkedin.com/in/jaime-galán-gómez-566b84413</a>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p data-en="Jaime Galán Gómez — DAW student — Málaga">Jaime Galán Gómez — Estudiante de DAW — Málaga</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

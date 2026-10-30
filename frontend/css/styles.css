@@ -1,0 +1,374 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  --fondo: #f4f6f8;
+  --texto: #1c2430;
+  --titulo: #0b6e6a;
+  --barra: #16324f;
+  --texto-barra: #ffffff;
+  --menu: #d6e4f0;
+  --enlace: #1a5276;
+  --pie: #5c6b7a;
+  --discreto: rgba(255, 255, 255, 0.68);
+  --foto-nombre: url("../img/Fondo_dia.png?v=2");
+  --foto-yo: url("../img/Yo_dia.png?v=2");
+  --sombra-foto: -8px 8px 12px rgba(24, 23, 23, 0.72);
+  --color-nombre: #0b6e6a;
+  --sombra-nombre: 0 1px 8px rgb(255, 255, 255);
+}
+
+html.modo-noche {
+  --fondo: #181f27;
+  --texto: #e6edf3;
+  --titulo: #f0c36a;
+  --barra: #0a0f14;
+  --texto-barra: #e6edf3;
+  --menu: #b7c6d4;
+  --enlace: #9ec5e4;
+  --pie: #9aa8b5;
+  --discreto: rgba(230, 237, 243, 0.62);
+  --foto-nombre: url("../img/Fondo_noche.png?v=2");
+  --foto-yo: url("../img/Yo_noche.png?v=2");
+  --sombra-foto: -8px 8px 12px rgba(8, 8, 8, 0.9);
+  --color-nombre: #f0c36a;
+  --sombra-nombre: 0 1px 12px rgba(0, 0, 0, 0.6);
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--texto);
+  background: var(--fondo);
+  overflow-wrap: break-word;
+}
+
+header {
+  background: var(--barra);
+  color: var(--texto-barra);
+  padding: 1rem 1.25rem;
+}
+
+.github {
+  display: inline-flex;
+  margin: 0 0 0.75rem;
+  color: var(--menu);
+}
+
+.github svg {
+  width: 1.35rem;
+  height: 1.35rem;
+  display: block;
+}
+
+.github:hover,
+.github:focus-visible {
+  color: var(--texto-barra);
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.85rem;
+}
+
+nav a {
+  color: var(--menu);
+  text-decoration: none;
+}
+
+nav a:hover {
+  color: var(--texto-barra);
+  text-decoration: underline;
+}
+
+.ajustes {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-left: auto;
+}
+
+.ajustes button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: var(--discreto);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.ajustes button:hover,
+.ajustes button:focus-visible {
+  color: var(--texto-barra);
+}
+
+.ajustes button:focus-visible {
+  outline: 1px solid var(--discreto);
+  outline-offset: 3px;
+}
+
+main {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 8rem 1.25rem 2.5rem;
+}
+
+/* La portada ocupa la primera pantalla: barra arriba y la sección nombre el resto. */
+.portada {
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Sección: nombre */
+#nombre {
+  position: relative;
+  flex: 1;
+  padding: clamp(2.75rem, 8vh, 5.5rem) max(1.25rem, calc((100% - 760px) / 2 + 1.25rem)) 2rem;
+}
+
+#nombre::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--foto-nombre);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  -webkit-mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 92%, transparent 100%);
+  pointer-events: none;
+}
+
+.nombre-texto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+#nombre h1,
+#nombre p {
+  position: relative;
+}
+
+#nombre h1 {
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 0.75rem;
+  text-align: center;
+  font-size: 5rem;
+  line-height: 1.1;
+  color: var(--color-nombre);
+  text-shadow: var(--sombra-nombre);
+}
+
+#nombre p {
+  max-width: 100%;
+  margin: 0;
+  font-size: 2.05rem;
+  text-align: center;
+  text-shadow: var(--sombra-nombre);
+}
+
+/* Sección: sobre mí */
+#sobre-mi {
+  display: grid;
+  gap: 1.5rem;
+  justify-items: start;
+  margin-bottom: 8rem;
+}
+
+.foto-yo {
+  width: min(18rem, 78%);
+  aspect-ratio: 1438 / 512;
+  margin-left: auto;
+  margin-right: -1.25rem;
+  border-radius: 3.5rem 0 0 3.5rem;
+  box-shadow: var(--sombra-foto);
+  background-image: var(--foto-yo);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.sobre-mi-texto {
+  margin-left: -0.75rem;
+}
+
+#sobre-mi h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--titulo);
+}
+
+#sobre-mi p {
+  margin: 0;
+  max-width: 30rem;
+  font-size: 1.05rem;
+}
+
+/* Sección: conocimientos */
+#conocimientos {
+  margin-bottom: 8rem;
+}
+
+.logos {
+  display: block;
+  width: min(28rem, 100%);
+  height: auto;
+  margin-bottom: 1.25rem;
+}
+
+#conocimientos h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--titulo);
+}
+
+#conocimientos ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 1.05rem;
+}
+
+#conocimientos li + li {
+  margin-top: 0.4rem;
+}
+
+/* Sección: proyectos */
+#proyectos {
+  margin-bottom: 8rem;
+}
+
+#proyectos h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--titulo);
+}
+
+#proyectos p {
+  margin: 0;
+  font-size: 1.05rem;
+}
+
+/* Sección: contacto */
+#contacto {
+  margin-bottom: 4rem;
+}
+
+#contacto h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  color: var(--titulo);
+}
+
+#contacto ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  font-size: 1.05rem;
+}
+
+#contacto li + li {
+  margin-top: 0.4rem;
+}
+
+#contacto a {
+  color: var(--enlace);
+  overflow-wrap: anywhere;
+}
+
+footer {
+  color: var(--pie);
+  text-align: center;
+  padding: 0 1rem 2rem;
+  font-size: 0.95rem;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* En pantallas anchas, GitHub queda a la izquierda y el menú, con los ajustes, a la derecha. */
+@media (min-width: 720px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1rem 2rem;
+  }
+
+  .github {
+    margin: 0;
+  }
+
+  .menu {
+    flex-wrap: nowrap;
+  }
+
+  main {
+    padding-top: 11rem;
+  }
+
+  #sobre-mi,
+  #conocimientos,
+  #proyectos {
+    margin-bottom: 11rem;
+  }
+
+  /* El texto a la izquierda. La foto sale del bloque y llega al borde derecho. */
+  #sobre-mi {
+    position: relative;
+    width: min(36rem, calc(100vw - 22rem));
+    margin-left: calc((min(100vw, 760px) - 100vw) / 2 + 4.5rem);
+    display: block;
+  }
+
+  .foto-yo {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc(100vw - 8.25rem - min(36rem, 100vw - 22rem));
+    margin: 0;
+    aspect-ratio: auto;
+    right: calc(5.75rem + min(36rem, 100vw - 22rem) - 100vw);
+  }
+
+  /* El texto se pega a la derecha y conserva el margen con la ventana. */
+  #conocimientos {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) min(36rem, 70%) 4.25rem;
+    align-items: center;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+  }
+
+  #conocimientos > div {
+    grid-column: 2;
+  }
+
+  .logos {
+    justify-self: center;
+    width: min(28rem, 85%);
+    margin: 0;
+  }
+}
