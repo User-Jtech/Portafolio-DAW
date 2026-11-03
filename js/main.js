@@ -3,7 +3,7 @@ let botonIdioma = document.getElementById("btn-idioma");
 let botonTema = document.getElementById("btn-tema");
 let pagina = document.querySelector("html");
 
-// Si la última vez se eligió inglés o noche, lo recupero. Si no, español y día.
+// Si la última vez se eligió un idioma o un tema, lo recupero. Si no, español y noche.
 let idioma = localStorage.getItem("idioma");
 if (idioma == null) {
   idioma = "es";
@@ -11,7 +11,7 @@ if (idioma == null) {
 
 let tema = localStorage.getItem("tema");
 if (tema == null) {
-  tema = "dia";
+  tema = "noche";
 }
 
 // Cada texto en inglés está en data-en. Aquí guardo también el español que ya está escrito en el HTML.

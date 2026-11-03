@@ -2,17 +2,25 @@
   box-sizing: border-box;
 }
 
-html {
+/* Día. La noche cambia estos mismos nombres en html.modo-noche. */
+:root {
   scroll-behavior: smooth;
-  --fondo: #f4f6f8;
+  --fondo: #dce9e4;
+  --fondo-suave: #e3f0eb;
+  --vidrio: rgba(16, 40, 50, 0.78);
+  --pastilla: rgba(255, 255, 255, 0.72);
   --texto: #1c2430;
   --titulo: #0b6e6a;
-  --barra: #16324f;
+  --acento: #1aa88a;
+  --barra: #102832;
   --texto-barra: #ffffff;
   --menu: #d6e4f0;
-  --enlace: #1a5276;
+  --enlace: #0f6e86;
   --pie: #5c6b7a;
   --discreto: rgba(255, 255, 255, 0.68);
+  --tarjeta: rgba(255, 255, 255, 0.82);
+  --borde: rgba(11, 110, 106, 0.18);
+  --sombra-tarjeta: 0 12px 28px rgba(16, 40, 50, 0.08);
   --foto-nombre: url("../img/Fondo_dia.png?v=2");
   --foto-yo: url("../img/Yo_dia.png?v=2");
   --sombra-foto: -8px 8px 12px rgba(24, 23, 23, 0.72);
@@ -21,15 +29,22 @@ html {
 }
 
 html.modo-noche {
-  --fondo: #181f27;
+  --fondo: #141b20;
+  --fondo-suave: #1c272e;
+  --vidrio: rgba(10, 15, 20, 0.78);
+  --pastilla: rgba(10, 15, 20, 0.45);
   --texto: #e6edf3;
   --titulo: #f0c36a;
+  --acento: #7ddec8;
   --barra: #0a0f14;
   --texto-barra: #e6edf3;
   --menu: #b7c6d4;
   --enlace: #9ec5e4;
   --pie: #9aa8b5;
   --discreto: rgba(230, 237, 243, 0.62);
+  --tarjeta: rgba(255, 255, 255, 0.05);
+  --borde: rgba(240, 195, 106, 0.28);
+  --sombra-tarjeta: 0 12px 28px rgba(0, 0, 0, 0.28);
   --foto-nombre: url("../img/Fondo_noche.png?v=2");
   --foto-yo: url("../img/Yo_noche.png?v=2");
   --sombra-foto: -8px 8px 12px rgba(8, 8, 8, 0.9);
@@ -39,18 +54,25 @@ html.modo-noche {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", system-ui, sans-serif;
+  font-family: "Outfit", "Segoe UI", system-ui, sans-serif;
   font-size: 1.05rem;
-  line-height: 1.6;
+  font-weight: 400;
+  line-height: 1.65;
   color: var(--texto);
-  background: var(--fondo);
+  background: linear-gradient(180deg, var(--fondo-suave), var(--fondo) 18rem);
   overflow-wrap: break-word;
 }
 
 header {
-  background: var(--barra);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 20;
+  background: var(--vidrio);
   color: var(--texto-barra);
-  padding: 1rem 1.25rem;
+  padding: 0.9rem 1.25rem;
+  backdrop-filter: blur(14px);
 }
 
 .github {
@@ -85,34 +107,39 @@ nav {
 
 nav a {
   color: var(--menu);
+  font-weight: 500;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 
 nav a:hover {
   color: var(--texto-barra);
-  text-decoration: underline;
+  border-bottom-color: var(--acento);
 }
 
 .ajustes {
   display: flex;
   align-items: center;
-  gap: 0.9rem;
+  gap: 0.55rem;
   margin-left: auto;
 }
 
 .ajustes button {
-  background: none;
-  border: 0;
-  padding: 0;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 999px;
+  padding: 0.2rem 0.7rem;
   color: var(--discreto);
   font: inherit;
   font-size: 0.8rem;
+  font-weight: 500;
   cursor: pointer;
 }
 
 .ajustes button:hover,
 .ajustes button:focus-visible {
   color: var(--texto-barra);
+  border-color: var(--texto-barra);
 }
 
 .ajustes button:focus-visible {
@@ -124,9 +151,10 @@ main {
   max-width: 760px;
   margin: 0 auto;
   padding: 8rem 1.25rem 2.5rem;
+  counter-reset: seccion;
 }
 
-/* La portada ocupa la primera pantalla: barra arriba y la sección nombre el resto. */
+/* La portada ocupa la primera pantalla: barra arriba y el nombre el resto. */
 .portada {
   min-height: 100vh;
   min-height: 100dvh;
@@ -134,11 +162,10 @@ main {
   flex-direction: column;
 }
 
-/* Sección: nombre */
 #nombre {
   position: relative;
   flex: 1;
-  padding: clamp(2.75rem, 8vh, 5.5rem) max(1.25rem, calc((100% - 760px) / 2 + 1.25rem)) 2rem;
+  padding: 8.5rem max(1.25rem, calc((100% - 760px) / 2 + 1.25rem)) 2rem;
 }
 
 #nombre::before {
@@ -172,7 +199,9 @@ main {
   margin: 0 0 0.75rem;
   text-align: center;
   font-size: 5rem;
-  line-height: 1.1;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
   color: var(--color-nombre);
   text-shadow: var(--sombra-nombre);
 }
@@ -180,9 +209,38 @@ main {
 #nombre p {
   max-width: 100%;
   margin: 0;
-  font-size: 2.05rem;
+  padding: 0.35rem 0.95rem;
+  border-radius: 999px;
+  background: var(--pastilla);
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.35;
   text-align: center;
-  text-shadow: var(--sombra-nombre);
+  text-shadow: none;
+}
+
+/* Número delante de cada título: 01, 02, 03, 04. */
+main section {
+  counter-increment: seccion;
+}
+
+main h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0 0 1rem;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--titulo);
+}
+
+main h2::before {
+  content: counter(seccion, decimal-leading-zero);
+  color: var(--acento);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
 }
 
 /* Sección: sobre mí */
@@ -208,13 +266,11 @@ main {
 
 .sobre-mi-texto {
   margin-left: -0.75rem;
-}
-
-#sobre-mi h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  color: var(--titulo);
+  padding: 1.2rem 1.3rem 1.3rem;
+  border: 1px solid var(--borde);
+  border-radius: 1.15rem;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra-tarjeta);
 }
 
 #sobre-mi p {
@@ -235,33 +291,92 @@ main {
   margin-bottom: 1.25rem;
 }
 
-#conocimientos h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  color: var(--titulo);
+.tecnologias {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0 0 1.15rem;
+  padding: 0;
+  list-style: none;
 }
 
-#conocimientos ul {
+.tecnologias li {
+  padding: 0.28rem 0.75rem;
+  border: 1px solid var(--borde);
+  border-radius: 999px;
+  background: var(--tarjeta);
+  font-size: 0.86rem;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.tecnologias li::before {
+  content: "";
+  display: inline-block;
+  width: 0.4rem;
+  height: 0.4rem;
+  margin-right: 0.4rem;
+  border-radius: 50%;
+  background: var(--acento);
+  vertical-align: 0.05rem;
+}
+
+.lista {
   margin: 0;
-  padding-left: 1.2rem;
-  font-size: 1.05rem;
+  padding: 0;
+  list-style: none;
 }
 
-#conocimientos li + li {
-  margin-top: 0.4rem;
+#conocimientos .lista {
+  display: grid;
+  gap: 0.75rem;
 }
 
-/* Sección: proyectos */
+#conocimientos .lista li {
+  padding: 0.9rem 1rem 0.9rem 0.95rem;
+  border: 1px solid var(--borde);
+  border-left: 3px solid var(--acento);
+  border-radius: 1rem;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  font-size: 1.02rem;
+}
+
+/* Tarjeta de proyectos y de contacto. */
+.tarjeta {
+  border: 1px solid var(--borde);
+  border-radius: 1.15rem;
+  background: var(--tarjeta);
+  box-shadow: var(--sombra-tarjeta);
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta:hover {
+  transform: translateY(-4px);
+  border-color: var(--acento);
+  box-shadow: 0 16px 32px rgba(16, 40, 50, 0.12);
+}
+
 #proyectos {
   margin-bottom: 8rem;
 }
 
-#proyectos h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  color: var(--titulo);
+#proyectos .tarjeta {
+  position: relative;
+  padding: 2.7rem 1.35rem 1.35rem;
+}
+
+/* Tres puntos, como la barra de una ventana de código. */
+#proyectos .tarjeta::before {
+  content: "";
+  position: absolute;
+  top: 1rem;
+  left: 1.2rem;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #e07a5f;
+  box-shadow: 0.95rem 0 0 #e6b325, 1.9rem 0 0 #3dbea8;
 }
 
 #proyectos p {
@@ -269,45 +384,52 @@ main {
   font-size: 1.05rem;
 }
 
-/* Sección: contacto */
 #contacto {
   margin-bottom: 4rem;
 }
 
-#contacto h2 {
-  margin: 0 0 0.75rem;
-  font-size: 1.45rem;
-  line-height: 1.25;
-  color: var(--titulo);
-}
-
-#contacto ul {
-  margin: 0;
-  padding-left: 1.2rem;
-  font-size: 1.05rem;
+#contacto .tarjeta {
+  padding: 0.4rem 1.25rem;
 }
 
 #contacto li + li {
-  margin-top: 0.4rem;
+  border-top: 1px solid var(--borde);
+}
+
+#contacto li {
+  padding: 0.85rem 0;
+  font-size: 1.05rem;
 }
 
 #contacto a {
   color: var(--enlace);
+  font-weight: 500;
   overflow-wrap: anywhere;
+}
+
+#contacto a:hover {
+  color: var(--acento);
+}
+
+#contacto a[target="_blank"]::after {
+  content: " ↗";
 }
 
 footer {
   color: var(--pie);
   text-align: center;
-  padding: 0 1rem 2rem;
+  margin: 0 1.25rem;
+  padding: 1.25rem 0 2.5rem;
+  border-top: 1px solid var(--borde);
   font-size: 0.95rem;
+  letter-spacing: 0.02em;
 }
 
 footer p {
   margin: 0;
 }
 
-/* En pantallas anchas, GitHub queda a la izquierda y el menú, con los ajustes, a la derecha. */
+/* En pantallas anchas, GitHub queda a la izquierda y el menú a la derecha. */
 @media (min-width: 720px) {
   header {
     display: flex;
@@ -327,6 +449,10 @@ footer p {
 
   main {
     padding-top: 11rem;
+  }
+
+  #nombre {
+    padding-top: clamp(7rem, 14vh, 9rem);
   }
 
   #sobre-mi,
