@@ -310,14 +310,36 @@ main h2 {
 
 #conocimientos .bloque {
   display: grid;
-  grid-template-columns: 16rem 1fr;
+  grid-template-columns: 18rem 1fr;
   gap: 2rem;
   align-items: center;
 }
 
-.logos {
-  width: 100%;
+.logos-juntos {
+  display: none;
+  width: min(18rem, 100%);
   height: auto;
+  margin: 0 auto;
+}
+
+.logos {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.1rem;
+}
+
+.logos img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 6px 5px rgba(0, 0, 0, 0.28);
+}
+
+.logos img:nth-child(even) {
+  margin-left: 4.5rem;
 }
 
 .tecnologias {
@@ -464,5 +486,13 @@ footer p {
 
   .foto-yo {
     min-height: 12rem;
+  }
+
+  .logos {
+    display: none;
+  }
+
+  .logos-juntos {
+    display: block;
   }
 }
